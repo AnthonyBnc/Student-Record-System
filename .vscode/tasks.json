@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build (C - StudentRecordSystem)",
+        "type": "shell",
+        "group": "build",
+        "problemMatcher": ["$gcc"],
+        "linux": {
+          "command": "gcc",
+          "args": [
+            "-std=c11", "-Wall", "-Wextra", "-O0", "-g",
+            "src/*.c",
+            "-I", "include",
+            "-o", "bin/student_system"
+          ]
+        },
+        "osx": {
+          "command": "clang",
+          "args": [
+            "-std=c11", "-Wall", "-Wextra", "-O0", "-g",
+            "src/*.c",
+            "-I", "include",
+            "-o", "bin/student_system"
+          ]
+        },
+        "windows": {
+          "command": "gcc",
+          "args": [
+            "-std=c11", "-Wall", "-Wextra", "-O0", "-g",
+            "src\\*.c",
+            "-I", "include",
+            "-o", "bin\\student_system.exe"
+          ]
+        },
+        "options": { "cwd": "${workspaceFolder}" }
+      },
+      {
+        "label": "Run (Build + Execute)",
+        "type": "shell",
+        "dependsOn": "Build (C - StudentRecordSystem)",
+        "linux":   { "command": "./bin/student_system" },
+        "osx":     { "command": "./bin/student_system" },
+        "windows": { "command": ".\\bin\\student_system.exe" },
+        "options": { "cwd": "${workspaceFolder}" },
+        "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+      }
+    ]
+  }
+  
